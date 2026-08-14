@@ -1,0 +1,4 @@
+# apt packages installed by Streamlit Community Cloud before the app starts.
+# Tesseract is the OCR verification tier's binary dependency; it is not a pip
+# package, so it cannot live in requirements.txt.
+tesseract-ocr
