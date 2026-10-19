@@ -5,7 +5,7 @@ scipy>=1.11
 pillow>=10
 
 # GUI app (streamlit run app.py)
-streamlit>=1.30
+streamlit>=1.50
 
 # Local OCR verdicts (the OCR tier / --ocr). Reads the label text at each target.
 # ALSO requires the Tesseract binary (not a pip package):

@@ -159,6 +159,7 @@ def _chat(cfg: Config, instr: str, before_b64: str, after_b64: str, num_gpu) -> 
         headers={"Content-Type": "application/json"})
     deadline = time.monotonic() + cfg.vlm_timeout
     parts = []
+    completed = False
     resp = urllib.request.urlopen(req, timeout=cfg.vlm_timeout)
     try:
         for raw in resp:
@@ -176,10 +177,11 @@ def _chat(cfg: Config, instr: str, before_b64: str, after_b64: str, num_gpu) -> 
                 break
             parts.append((obj.get("message") or {}).get("content", ""))
             if obj.get("done"):
+                completed = True
                 break
     finally:
         resp.close()
-    return _parse("".join(parts))
+    return _parse("".join(parts)) if completed else None
 
 
 def _parse(content: str) -> Optional[dict]:
@@ -188,13 +190,15 @@ def _parse(content: str) -> Optional[dict]:
     if not content:
         return None
     try:
-        return json.loads(content)
+        parsed = json.loads(content)
+        return parsed if isinstance(parsed, dict) else None
     except Exception:
         pass
     i, j = content.find("{"), content.rfind("}")
     if 0 <= i < j:
         try:
-            return json.loads(content[i:j + 1])
+            parsed = json.loads(content[i:j + 1])
+            return parsed if isinstance(parsed, dict) else None
         except Exception:
             return None
     return None
@@ -246,12 +250,18 @@ def make_verifier(cfg: Config):
             # Only green when the model actually read a value back; a bare "yes"
             # with nothing read is treated as uncertain (never over-claim).
             if value:
+                from .ocr import _instruction_tokens, _words, _norm, _match
+                requested = _instruction_tokens(instr)
+                if requested and not all(_match(t, _words(value), _norm(value), 0)
+                                         for t in requested):
+                    return (C.CHANGED_OTHER, value,
+                            "VLM read-back differs from the instructed value — review")
                 return (C.CAPTURED, value,
                         f"VLM confirmed the instruction was applied: '{value}'"
                         + (f" — {reason}" if reason else ""))
             return None
         if applied == "no":
-            return (C.MISSED, "",
+            return (C.CHANGED_OTHER if changed else C.MISSED, value,
                     "VLM: the instruction does not appear applied at the target"
                     + (f" — {reason}" if reason else ""))
         return None  # uncertain -> keep the pixel/OCR verdict, leave for manual

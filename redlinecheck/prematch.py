@@ -118,7 +118,10 @@ def match_documents(rdoc: "fitz.Document", fdoc: "fitz.Document",
 def match_signatures(rsigs: List[PageSig], fsigs: List[PageSig],
                      cfg: Config) -> MatchResult:
     sim = _similarity_matrix(rsigs, fsigs)
-    pairs, extra_r, extra_f = _align(sim, cfg.prematch_gap)
+    # Reject weak diagonals during optimisation, rather than letting them earn
+    # score and displace a stronger valid pairing before dropping them afterward.
+    eligible = np.where(sim >= cfg.prematch_min_match, sim, NEG_INF)
+    pairs, extra_r, extra_f = _align(eligible, cfg.prematch_gap)
     # Drop weak "matches" the alignment was forced into; treat both sides as extra.
     good, scores = [], {}
     for ri, fi in pairs:

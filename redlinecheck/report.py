@@ -297,8 +297,6 @@ def _write_annotated_pdf(report: Report, out_dir: str, cfg: Config):
     out = fitz.open()
     scale = cfg.report_dpi / cfg.analysis_dpi
     for pr in report.pages:
-        if not (any(f.comment.kind != "marker" for f in pr.findings) or pr.unexpected):
-            continue
         stamp = _stamp_page(pr)
         if scale != 1.0:
             stamp = stamp.resize((max(1, int(stamp.width * scale)),
@@ -308,6 +306,16 @@ def _write_annotated_pdf(report: Report, out_dir: str, cfg: Config):
         rect = pr.page.final_page.rect
         newpage = out.new_page(width=rect.width, height=rect.height)
         newpage.insert_image(newpage.rect, stream=buf.getvalue())
+    # An all-clear comparison still needs a PDF, and unmatched/inserted pages
+    # must remain reviewable even when there are no matched sheets at all.
+    for extra in report.extra:
+        image = Image.fromarray(extra.thumb).convert("RGB")
+        buf = io.BytesIO()
+        image.save(buf, format="JPEG", quality=80)
+        newpage = out.new_page(width=image.width, height=image.height + 50)
+        newpage.insert_text((12, 18), f"{extra.kind}: {extra.label}", fontsize=10)
+        newpage.insert_image(fitz.Rect(0, 50, image.width, image.height + 50),
+                             stream=buf.getvalue())
     path = os.path.join(out_dir, "annotated.pdf")
     if out.page_count:
         out.save(path, deflate=True)

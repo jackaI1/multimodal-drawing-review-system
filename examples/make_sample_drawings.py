@@ -50,6 +50,8 @@ Then compare a pair, for example:
     python comparator.py examples/basic_redlined.pdf examples/basic_revised.pdf -o report
 """
 
+from __future__ import annotations
+
 import argparse
 import os
 
