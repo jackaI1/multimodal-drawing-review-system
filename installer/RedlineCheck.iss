@@ -28,7 +28,11 @@ PrivilegesRequired=admin
 Source: "app.py";              DestDir: "{app}"; Flags: ignoreversion
 Source: "comparator.py";       DestDir: "{app}"; Flags: ignoreversion
 Source: "requirements.txt";    DestDir: "{app}"; Flags: ignoreversion
+Source: "requirements-lock.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "README.md";           DestDir: "{app}"; Flags: ignoreversion
+Source: "LICENSE";             DestDir: "{app}"; Flags: ignoreversion
+Source: "THIRD_PARTY_NOTICES.md"; DestDir: "{app}"; Flags: ignoreversion
+Source: "THIRD_PARTY_LICENSES\*"; DestDir: "{app}\THIRD_PARTY_LICENSES"; Flags: ignoreversion recursesubdirs
 Source: "INSTALL.md";          DestDir: "{app}"; Flags: ignoreversion
 Source: "redlinecheck\*";      DestDir: "{app}\redlinecheck"; Flags: ignoreversion recursesubdirs
 Source: "installer\*";         DestDir: "{app}\installer";    Flags: ignoreversion recursesubdirs

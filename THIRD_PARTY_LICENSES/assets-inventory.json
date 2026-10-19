@@ -1,0 +1,1010 @@
+[
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/_core/tests/data/umath-validation-set-arccos.csv",
+    "sha256": "c81973f2be919e701885d9686f3186a3614a63e0e849341a3f6eb2f35dfc6b72",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/_core/tests/data/umath-validation-set-arccosh.csv",
+    "sha256": "d065deed71b56778d701c2be3a5128b7f0dfdcc7ad0d04a56e6dcc27ffe23109",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/_core/tests/data/umath-validation-set-arcsin.csv",
+    "sha256": "c3f4afd8d0e7fa62d9480a9be7a253da0e1ba81cf16008a179d5b11ee7fcdae5",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/_core/tests/data/umath-validation-set-arcsinh.csv",
+    "sha256": "0d9acc6286596723350c3c97354c52973c7a6ce81a8e74522d6033c5c3dc93c9",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/_core/tests/data/umath-validation-set-arctan.csv",
+    "sha256": "d1aa2c5d9fbd0d84e8a74963e1b7dc04dc1856f8d9756d7785b3114d1453995d",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/_core/tests/data/umath-validation-set-arctanh.csv",
+    "sha256": "1c42bd78fc753a42ab5c82a4314574231ae6b03a8896029d76223e2ef176276d",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/_core/tests/data/umath-validation-set-cbrt.csv",
+    "sha256": "bfce7931366287e7d9a7f1ae103b2ddaa688b315386bbbe501b788272db12a97",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/_core/tests/data/umath-validation-set-cos.csv",
+    "sha256": "d0f3670ea2a4a2467b11154381b7acf0a35973e21226b65495565ce4b916d7c1",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/_core/tests/data/umath-validation-set-cosh.csv",
+    "sha256": "24a0b89caaf7c13cc0fd7352890bd552af73918cb8763bedbb6fa3e1967fece7",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/_core/tests/data/umath-validation-set-exp.csv",
+    "sha256": "ad401621bbf278a87dacf7e9da7d19abb00aabf9ef1e981b8332e3025961b1e9",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/_core/tests/data/umath-validation-set-exp2.csv",
+    "sha256": "763a2c4feddf4e988dfdfff658eba680cbae2a00bf5e1a553be42c505c08eae5",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/_core/tests/data/umath-validation-set-expm1.csv",
+    "sha256": "2bb8cbe8de0a4065fbd5f8f986f624cdc31793b32641eb3c170acd7f2acfa605",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/_core/tests/data/umath-validation-set-log.csv",
+    "sha256": "ca7cdb55b2b1173c56170c479f15fb1699bebdad3da08de82b5fe54ded7d838c",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/_core/tests/data/umath-validation-set-log10.csv",
+    "sha256": "34e043fab39623f14f1b85666f3bb726d5fd500f37f1fd80683140fb06a2a860",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/_core/tests/data/umath-validation-set-log1p.csv",
+    "sha256": "b5d6d858fa96233f0111b232925ca787fb69409ce8f7bd0475de1e93a0ec3dbf",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/_core/tests/data/umath-validation-set-log2.csv",
+    "sha256": "dfd1140f4bc531bc32a17a0e8600a689de8d78401053b15fed01633ec54e6c81",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/_core/tests/data/umath-validation-set-sin.csv",
+    "sha256": "f0f5239d0fd87e6c456f8d9726bbe9be691e4a910e9445d298dbc82b85607c03",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/_core/tests/data/umath-validation-set-sinh.csv",
+    "sha256": "5ceb0152e3dc32388efe97af31a96999dd2246fda09a787dbbb6d5f592cb83c2",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/_core/tests/data/umath-validation-set-tan.csv",
+    "sha256": "1efd9650c22c71fbd0279639062a6e1e4e28138558e9029b429fe4351742a984",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/_core/tests/data/umath-validation-set-tanh.csv",
+    "sha256": "8a895917f30ec964606126be4ac0f875fe669f214ad7cceb20223be34496a137",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/lib/tests/data/py2-objarr.npz",
+    "sha256": "c68d771c14f415b159daabd9cf42d61836f74ae40049269787baca7d57098f1e",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/lib/tests/data/py3-objarr.npz",
+    "sha256": "bd5465f7f359effabe86376e52bf185a7cd1cbc1123659af30f95a4920baf5f9",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/random/tests/data/mt19937-testset-1.csv",
+    "sha256": "5e479fe34d80541f9e660610915b68c444479317df080f49cadfe831bb491b06",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/random/tests/data/mt19937-testset-2.csv",
+    "sha256": "9ec04440d9df7fe6858c760ae2d863bd42b8c525c349fbf96936dc139f693a41",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/random/tests/data/pcg64-testset-1.csv",
+    "sha256": "c41d340e99271944d30b10ebf4be9a368f47b3eb1fcc431b5124b8b75d534df1",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/random/tests/data/pcg64-testset-2.csv",
+    "sha256": "3537734cabc6d94eff5b253f228414b4ccd4de412f0c7dfd0a09d1e95ce14e4c",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/random/tests/data/pcg64dxsm-testset-1.csv",
+    "sha256": "bcd4944fe8174bfa04c3f6b04773b7d338953b8b1e34f52fd54219d3549f5672",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/random/tests/data/pcg64dxsm-testset-2.csv",
+    "sha256": "bb2952f0f536008299d7ce4e0b4e1106bfce78fc1e191b6f9fe744e18374c980",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/random/tests/data/philox-testset-1.csv",
+    "sha256": "49e751688cb9cc569d9a4ef59caac6c42159e81c0acfc83503df8e669dc89246",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/random/tests/data/philox-testset-2.csv",
+    "sha256": "756102b7eb1b7ef69288af3e620a7902aca3a0de62dba5443ab5ea834d6b9378",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/random/tests/data/sfc64-testset-1.csv",
+    "sha256": "887b3a897e8a47c6f11b02a4fb7b5e74074c3f3e995bcb250d25040a402a0bc4",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "numpy",
+    "version": "2.5.4",
+    "file": "numpy/random/tests/data/sfc64-testset-2.csv",
+    "sha256": "1480c80c509a3d97d6512c6c24c01ee7c84f36632b536ee409df45842118b7f9",
+    "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://numpy.org"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/favicon.png",
+    "sha256": "89fe5c560c3b6b3c4a3af5791691a2c606bb24b9f6deb7e71dccb509d588d7e1",
+    "license": "Apache-2.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/KaTeX_AMS-Regular.BQhdFMY1.woff2",
+    "sha256": "0cdd387c9590a1a9f9794560022dbb59654a7d86f187aa0c81495ad42d3a7308",
+    "license": "MIT",
+    "evidence": "KaTeX entry in exact-release Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/KaTeX_Caligraphic-Bold.Dq_IR9rO.woff2",
+    "sha256": "de7701e42cf1f4cf0b766c03fb27977207eee2f4fd5d76fa82188406da43ea4c",
+    "license": "MIT",
+    "evidence": "KaTeX entry in exact-release Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/KaTeX_Caligraphic-Regular.Di6jR-x-.woff2",
+    "sha256": "5d53e70ad607c2352162dec9e0923fb54ecdafaccbf604cd8dcf7d00facb989b",
+    "license": "MIT",
+    "evidence": "KaTeX entry in exact-release Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/KaTeX_Fraktur-Bold.CL6g_b3V.woff2",
+    "sha256": "74444efd593c005e3f4573b44524704c0af0a937fe911cca9e94068d0d140d3f",
+    "license": "MIT",
+    "evidence": "KaTeX entry in exact-release Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/KaTeX_Fraktur-Regular.CTYiF6lA.woff2",
+    "sha256": "51814d270d06ff0255dba0799994fa4d8c84d11f09951d47595f4abb1f3602dc",
+    "license": "MIT",
+    "evidence": "KaTeX entry in exact-release Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/KaTeX_Main-Bold.Cx986IdX.woff2",
+    "sha256": "0f60d1b897938ec918c8ce073092411baf9438f6739465693ff18b0f9d20b021",
+    "license": "MIT",
+    "evidence": "KaTeX entry in exact-release Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/KaTeX_Main-BoldItalic.DxDJ3AOS.woff2",
+    "sha256": "99cd42a3c072d918f2f44984a807cf7aa16e13545fd0875fc07c6c65f99e715b",
+    "license": "MIT",
+    "evidence": "KaTeX entry in exact-release Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/KaTeX_Main-Italic.NWA7e6Wa.woff2",
+    "sha256": "97479ca6cce906abc961ecac96faa5f9ca2e61b8e7670d475826bcdee9a7c267",
+    "license": "MIT",
+    "evidence": "KaTeX entry in exact-release Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/KaTeX_Main-Regular.B22Nviop.woff2",
+    "sha256": "c2342cd8b869e01752a9321dc17213fc40d4d04c79688c1d43f2cf316abd7866",
+    "license": "MIT",
+    "evidence": "KaTeX entry in exact-release Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/KaTeX_Math-BoldItalic.CZnvNsCZ.woff2",
+    "sha256": "dc47344dbb6cb5b655c8460d561f4df5f501b90c804ad3c6cec65fe322351ab1",
+    "license": "MIT",
+    "evidence": "KaTeX entry in exact-release Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/KaTeX_Math-Italic.t53AETM-.woff2",
+    "sha256": "7af58c5ec8f132a2ddde9027c6d7814decce4d3b822a11192a42a20e2e973264",
+    "license": "MIT",
+    "evidence": "KaTeX entry in exact-release Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/KaTeX_SansSerif-Bold.D1sUS0GD.woff2",
+    "sha256": "e99ae51144bf1232efcc1bfe5add36262c6866b0faab24fa75740e1b98577a62",
+    "license": "MIT",
+    "evidence": "KaTeX entry in exact-release Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/KaTeX_SansSerif-Italic.C3H0VqGB.woff2",
+    "sha256": "00b26ac825e2095056396e0553b8ac26d3f8ad158c3826e28b4c45b385c4714a",
+    "license": "MIT",
+    "evidence": "KaTeX entry in exact-release Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/KaTeX_SansSerif-Regular.DDBCnlJ7.woff2",
+    "sha256": "68e8c73ef42afd3ccec58bf0fba302cce448938e7fc020a5e31f8a952eee1342",
+    "license": "MIT",
+    "evidence": "KaTeX entry in exact-release Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/KaTeX_Script-Regular.D3wIWfF6.woff2",
+    "sha256": "036d4e95149b69ff9bcc0cd55771efeb25ffa3947293e69acd78d5ac328c684b",
+    "license": "MIT",
+    "evidence": "KaTeX entry in exact-release Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/KaTeX_Size1-Regular.mCD8mA8B.woff2",
+    "sha256": "6b47c40166b6dbe21a5dfca7718413f2147fd2399be1ba605d8ad39cedf25dfe",
+    "license": "MIT",
+    "evidence": "KaTeX entry in exact-release Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/KaTeX_Size2-Regular.Dy4dx90m.woff2",
+    "sha256": "d04c54219f9eaec6d4d4fd42dfb28785975a4794d6b2fc71e566b9cd6db842dd",
+    "license": "MIT",
+    "evidence": "KaTeX entry in exact-release Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/KaTeX_Size4-Regular.Dl5lxZxV.woff2",
+    "sha256": "a4af7d414440a1c1790825cfb700cf9cf43b0f2c4b04f0ebc523011ad9853ec0",
+    "license": "MIT",
+    "evidence": "KaTeX entry in exact-release Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/KaTeX_Typewriter-Regular.CO6r4hn1.woff2",
+    "sha256": "71d517d67827787cfabdf186914cc3358eda539e37931941f2b2fd4a21f68c0b",
+    "license": "MIT",
+    "evidence": "KaTeX entry in exact-release Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/MaterialSymbols-Rounded.D_GK7ERd.woff2",
+    "sha256": "d80b2b1be308087205839b37bc64ddf13a754987caffaad8fca32399b981dd99",
+    "license": "Apache-2.0",
+    "evidence": "Material Icons entry in exact-release Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/SourceCodeVF-Italic.ttf.Ba1oaZG1.woff2",
+    "sha256": "720e47a2e54568db2908bfbb32894c1c298fd948cc8942426987c2d29f7ebd9e",
+    "license": "OFL-1.1",
+    "evidence": "Exact-release Source font license and Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/SourceCodeVF-Upright.ttf.BjWn63N-.woff2",
+    "sha256": "d95dc751b4d82141259f5c00c9838addaadd3b4eac30dd7db4a0da4921d77792",
+    "license": "OFL-1.1",
+    "evidence": "Exact-release Source font license and Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/SourceSansVF-Italic.ttf.Bt9VkdQ3.woff2",
+    "sha256": "b4959abc0569392f87c6c6ac612f90e3fe0104d283724189b7d8b6f61af347d3",
+    "license": "OFL-1.1",
+    "evidence": "Exact-release Source font license and Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/SourceSansVF-Upright.ttf.BsWL4Kly.woff2",
+    "sha256": "5f16566f7a40d39b339ad26be151fa5a1ab1f0c2574c7a2e619765584a1acbd8",
+    "license": "OFL-1.1",
+    "evidence": "Exact-release Source font license and Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/SourceSerifVariable-Italic.ttf.CVdzAtxO.woff2",
+    "sha256": "9d28b5749a1ad096a295cb607c521bd1af4cd9979b6f37332daf70143149fb44",
+    "license": "OFL-1.1",
+    "evidence": "Exact-release Source font license and Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/SourceSerifVariable-Roman.ttf.mdpVL9bi.woff2",
+    "sha256": "940a76eda1388de39d38c8e7a79bf6ea058a387faee0a9f33c8d25c6ba05e1be",
+    "license": "OFL-1.1",
+    "evidence": "Exact-release Source font license and Streamlit NOTICES",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/balloon-0.Czj7AKwE.png",
+    "sha256": "a46efdd79216954c7f9e70d75a62ca62ee67a532a9b044ea03432a5a372b396b",
+    "license": "Apache-2.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/balloon-1.CNvFFrND.png",
+    "sha256": "49693f2424ecc42af33f7462c1689f3c396bd94b74578c1f1ab598f5c5be46ba",
+    "license": "Apache-2.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/balloon-2.DTvC6B1t.png",
+    "sha256": "82cce62f6a160cff8446ebb965106ba7375408eedc320af377a2c18d6e3c2e46",
+    "license": "Apache-2.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/balloon-3.CgSk4tbL.png",
+    "sha256": "bdf4e628699b6428714e51c470cbe788a3e5c1af9735bd060e5ae66ba5efb256",
+    "license": "Apache-2.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/balloon-4.mbtFrzxf.png",
+    "sha256": "d1d2e0eeed565167f867f25d7ca42c8a6324dbcd5503333018e29052349d2e73",
+    "license": "Apache-2.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/balloon-5.CSwkUfRA.png",
+    "sha256": "aa4590966b89f503b89759fa91608ae71edfa56460c7ecf32f6d0c63cde36568",
+    "license": "Apache-2.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/fireworks.B4d-_KUe.gif",
+    "sha256": "64ed55f1c8f15df3c664c45a2085a6e2df34bef7982d9df399a590391a50d338",
+    "license": "Apache-2.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/flake-0.DgWaVvm5.png",
+    "sha256": "9b0a7fd5983ad5c649ee38288857eb9276a420603f87822423c686c5733423fd",
+    "license": "Apache-2.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/flake-1.B2r5AHMK.png",
+    "sha256": "860d955fa3bdae67d045b8f1443150107d6ce039c8354f755cfa87663836a394",
+    "license": "Apache-2.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/flake-2.BnWSExPC.png",
+    "sha256": "362f9c20f89ed59fb4189a01a116afc87e3f22d7fe8c253eb77dc3fc924028f4",
+    "license": "Apache-2.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "streamlit",
+    "version": "1.66.0",
+    "file": "streamlit/static/static/media/snowflake.JU2jBHL8.svg",
+    "sha256": "4a87bc72191ab1a5e1c4c60e6a43005d1475044bb65e9d36868b19ad25c5ea57",
+    "license": "Apache-2.0",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://streamlit.io"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/fftpack/tests/fftw_double_ref.npz",
+    "sha256": "a60c649415b645223924d8342ccc5c097801c86901287a369e53fc9259f5ec4e",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/fftpack/tests/fftw_longdouble_ref.npz",
+    "sha256": "a406cbd4dad04d0c59dd38f54416fb49424c82229c1a074b6a44ec0cde2000e3",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/fftpack/tests/fftw_single_ref.npz",
+    "sha256": "276a9141318e6fc36e4ab6ff54a61b64054ef8849b660f17359e5f541b43c526",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/fftpack/tests/test.npz",
+    "sha256": "36de804a22d8fdea054590ce49ddf3c859838b7d89193c56b3bcb660cbf43797",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/interpolate/tests/data/bug-1310.npz",
+    "sha256": "8d6803c0b398f2704c236f1d1b9e8e5ede06bd165a0abb0f228281abbd455ae9",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/interpolate/tests/data/gcvspl.npz",
+    "sha256": "03ce8155a6cba0c1bf0a2441a10c228191f916dec36cb820723429811296bba8",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/io/tests/data/test-1234Hz-le-1ch-10S-20bit-extra.wav",
+    "sha256": "87c097b16e7f4a1291d7deedfddf935139600ea399fbbc0afc47151ae711f9a6",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/io/tests/data/test-44100Hz-2ch-32bit-float-be.wav",
+    "sha256": "823bfffe783dc47fec9b7e21cb109b0a03b800ffbe3d901f0ce02b1f9a269233",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/io/tests/data/test-44100Hz-2ch-32bit-float-le.wav",
+    "sha256": "1f42cbcafda573682ecd81a7c780d65d4eaf079ec9ad15fe1bd0dde2a1a1d213",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/io/tests/data/test-44100Hz-be-1ch-4bytes.wav",
+    "sha256": "28acfd497bff477817fc055e103dafca16278f806f0f5bb20e22a9093dee959d",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/io/tests/data/test-44100Hz-le-1ch-4bytes-early-eof-no-data.wav",
+    "sha256": "617d60f2a7423801b5eaf5fd1baab84ac7c28f6655935f7d8f30d0f12d335982",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/io/tests/data/test-44100Hz-le-1ch-4bytes-early-eof.wav",
+    "sha256": "6c5aec46ac344179ac683b630fa4c53fc859e631183326829adfa46bf0ba18d9",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/io/tests/data/test-44100Hz-le-1ch-4bytes-incomplete-chunk.wav",
+    "sha256": "ccc9e1bd9beb3f893239629529f6c19decafd37c6fce0a976211cdc6c0310c9e",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/io/tests/data/test-44100Hz-le-1ch-4bytes-rf64.wav",
+    "sha256": "1922690ae7b396f1db84fdc2af88cd5a6cf8cc6e3a5d9ea3722d9f5ad88c3749",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/io/tests/data/test-44100Hz-le-1ch-4bytes.wav",
+    "sha256": "f6a4c2be981dcf7ada79c54dd558a08073e742305fe3bc665e877d8820ec1229",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/io/tests/data/test-48000Hz-2ch-64bit-float-le-wavex.wav",
+    "sha256": "12a6019c4813c532af69302d740e47225e3b0821488def77cb885ac11e8fcaed",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/io/tests/data/test-8000Hz-be-3ch-5S-24bit.wav",
+    "sha256": "84661c8714058ebb6f642068d142e2fb1759f24aea5dc29d4e5dcd4947ea7bc9",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/io/tests/data/test-8000Hz-le-1ch-1byte-ulaw.wav",
+    "sha256": "0685020dcb771a263f24957f1e88211779b301e6d3d7c8f4d9cf8c3a7d7d2b15",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/io/tests/data/test-8000Hz-le-2ch-1byteu.wav",
+    "sha256": "47a109b21bd0a79615478181f6ee0a867e4733554c7c9523d3cda2f2d901209f",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/io/tests/data/test-8000Hz-le-3ch-5S-24bit-inconsistent.wav",
+    "sha256": "b76320ae2de1e892d00de92bc0884304e686e3a394cc7ca7533d2929bbcea4d5",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/io/tests/data/test-8000Hz-le-3ch-5S-24bit-rf64.wav",
+    "sha256": "8921b2aa8b97e7735a101df7b732976b5d4d44863dec61b8d3fa6a585fe4e4b4",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/io/tests/data/test-8000Hz-le-3ch-5S-24bit.wav",
+    "sha256": "c82bf4ba1faec7fb2426cc5e3a3ce88346019376503bf930e4724732ab55c88d",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/io/tests/data/test-8000Hz-le-3ch-5S-36bit.wav",
+    "sha256": "a22315b1057dfaa181cff670b1f024800f416573635db1f8cf1086bef753d116",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/io/tests/data/test-8000Hz-le-3ch-5S-45bit.wav",
+    "sha256": "7bded7a0facf1890c887c9ceea68a2fff562639c95966b783a73d0a03375763b",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/io/tests/data/test-8000Hz-le-3ch-5S-53bit.wav",
+    "sha256": "c1ba272a5cefcd0fdb418c81b23f86c278a164e867d2ec5f2a12ff9c434218d7",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/io/tests/data/test-8000Hz-le-3ch-5S-64bit.wav",
+    "sha256": "52ee503d071bb671659f139de33146c698930b8c20769e893a8609d95319214d",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/io/tests/data/test-8000Hz-le-4ch-9S-12bit.wav",
+    "sha256": "d45ebb87cb6bdb1cf40b92b6d53f72f60b29706034aa748ecec976be302b00cb",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/io/tests/data/test-8000Hz-le-5ch-9S-5bit.wav",
+    "sha256": "4c9bc653b1a9817742addae3ccc943b6989e0cc9c32be95630caa55a34f6dc16",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/linalg/tests/data/carex_15_data.npz",
+    "sha256": "13f3e1491a876bbf59d7ea10ad29c1f9b5996a2ab99216f31d5bfcd659012c1e",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/linalg/tests/data/carex_18_data.npz",
+    "sha256": "59f839467f2752b7df6fb6d4094396edd32a5929b764f7ffa1e6666431e6cac6",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/linalg/tests/data/carex_19_data.npz",
+    "sha256": "38e8fc7b041df0b23d7e5ca15ead1a065e6467611ef9a848cc7db93f80adfd87",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/linalg/tests/data/carex_20_data.npz",
+    "sha256": "14e222d34a7118c7284a1675c6feceee77b84df951a5c6ba2a5ee9ff3054fa1d",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/linalg/tests/data/carex_6_data.npz",
+    "sha256": "1b2a0736b541ebf5c4b9b4c00d6dab281e73c9fb9913c6e2581a781b37b602f9",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/linalg/tests/data/gendare_20170120_data.npz",
+    "sha256": "a3dfab451d9d5c20243e0ed85cd8b6c9657669fb9a0f83b5be165585783d55b5",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/ndimage/tests/dots.png",
+    "sha256": "b20b56fadc7471c0694d3e8148d9e28a83d7967bac16bf8852094afea3950414",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/signal/tests/data/GLB.Ts+dSST.csv",
+    "sha256": "1a3544d90d7e880ac4560dcd3d8db022a58a16b2960848564cfaca60ec1b98f5",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/sparse/linalg/tests/propack_test_data.npz",
+    "sha256": "25d42e05bb6cb5672db22ebf8df7f113e4cb21b1817491fadc996341a542346d",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/spatial/tests/data/degenerate_pointset.npz",
+    "sha256": "048abc1ddd924bf2d4d1f216015552ed9431f9e99546fbf382768eda58788175",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/special/tests/data/boost.npz",
+    "sha256": "57b5c2b67ee01c741536aae6ad9f8f128106b7fdff152afcf3d8f774b0645844",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/special/tests/data/gsl.npz",
+    "sha256": "cbf1afdd27999806a710279910a2eb2f9f7f559033c7ecb796deaa10c44feb31",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/special/tests/data/local.npz",
+    "sha256": "6c29e58ce827084f84db9f1bba96045a61ce69f1d3ea3d7c828a79c133cf88f2",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  },
+  {
+    "package": "scipy",
+    "version": "1.18.1",
+    "file": "scipy/stats/_sobol_direction_numbers.npz",
+    "sha256": "4859931147d42ce465b8605cb277f957d98b839d03194fdf06579357906d193b",
+    "license": "BSD-3-Clause",
+    "evidence": "Parent distribution license; no distinct license asserted",
+    "source": "https://scipy.org/"
+  }
+]
