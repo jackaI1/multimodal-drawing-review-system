@@ -4,9 +4,9 @@ https://github.com/user-attachments/assets/a815408f-6fef-4315-a157-25a5fc8508ed
 
 When someone marks up a technical drawing and sends it back to be corrected, a
 human then has to check, by eye, whether every correction was actually made.
-This tool does that check automatically: given the marked-up file and the
-corrected file, it reports which instructions were carried out, which were
-missed, and what changed that nobody asked for.
+This tool screens that revision: given the marked-up file and the corrected
+file, it reports possible misses, changes needing review, verified label
+corrections, and changes outside the marked targets.
 
 It runs entirely on the local machine. No file is uploaded anywhere.
 
@@ -25,7 +25,7 @@ decision worth explaining.
 ### 1. The pages stop lining up
 
 Compare page 1 to page 1 and page 2 to page 2, and everything works until
-someone inserts a sheet or splits one file into three. Then every subsequent
+someone inserts or drops a sheet. Then every subsequent
 pairing is off by one and the tool confidently compares unrelated drawings. This
 is the failure mode that makes a comparison tool worse than useless: it produces
 a full report, and the report is nonsense.
@@ -95,12 +95,16 @@ own text size, targeting roughly 30-pixel-tall labels, clamped to 200–500.
 
 Repeated content like title blocks and revision stamps is dropped by
 **fingerprinting each region's image and clustering by content across sheets**,
-not by position. Position-keyed detection lets boilerplate through on exactly
+with a conservative position-based fallback. Position-only detection lets boilerplate through on exactly
 the sheets where it shifts slightly, which is where it floods the report.
 
 ---
 
 ## Try it in three commands
+
+Use Python 3.9 or newer in a virtual environment (`python3 -m venv .venv`,
+then `source .venv/bin/activate` on macOS/Linux or `.venv\Scripts\activate` on
+Windows).
 
 ```bash
 pip install -r requirements.txt
@@ -129,11 +133,21 @@ Tesseract binary, which is not bundled:
 
 ```bash
 winget install UB-Mannheim.TesseractOCR    # Windows; requires admin
+# macOS: brew install tesseract
+# Debian/Ubuntu: sudo apt install tesseract-ocr
 python comparator.py examples/basic_redlined.pdf examples/basic_revised.pdf -o report --ocr
 ```
 
 Open `report/summary.html` for before/after crops of every finding. A browser UI
-is available with `streamlit run app.py`.
+is available with `streamlit run app.py`. The CLI leaves OCR off unless requested;
+the UI enables OCR initially when Tesseract is available. Ollama is always opt-in.
+
+With OCR, a newly read alternative label in the same family (asked for `L5`,
+changed `L3` to `L4`) is **Changed (other)** under *To verify*. Pixel activity
+alone is **Change at target (review)**. A missing label is a possible miss;
+only a confirmed requested value earns **Addressed (verified)**. Partial
+instructions, removed placeholders, and hexnote numbers found elsewhere on the
+sheet stay in review. Short labels retain stricter verification guards.
 
 ### The other scenarios
 
@@ -165,11 +179,12 @@ anyone to trust a count.
 
 ```bash
 pip install pytest
-python -m pytest tests/ -q     # 45 tests
+python -m pytest -q
 ```
 
-Coverage is concentrated on the pure functions: the sequence aligner, the OCR
-matcher, and filename normalisation. The alignment tests assert *properties*
+Coverage includes all eight generated scenarios, CLI report exports, browser
+results, real Tesseract read-back when installed, and the optional model's
+verdict policy with synthetic model responses. The alignment tests assert *properties*
 that must hold for any input — pairings never cross, every page index is
 accounted for exactly once — rather than checking fixed examples, so a
 regression in the aligner cannot slip through on an untested shape. All fixtures
@@ -179,8 +194,8 @@ are synthetic; no drawing is required to run them.
 
 - **This is a screening pass, not an adjudicator.** It tells a reviewer where to
   look. Every finding ships with before/after crops because a human confirms.
-- **Without `--ocr`, in-place text edits cannot be confirmed** and will surface
-  as possible misses. Both verification tiers are off by default.
+- **Without `--ocr` or `--vlm`, in-place text edits cannot be confirmed** and may
+  surface as possible misses. The CLI leaves both tiers off by default.
 - **The vision tier needs a real GPU.** On CPU it costs minutes per call, so it
   is opt-in and runs only on what OCR could not resolve.
 - **Heavily re-plotted sheets produce false positives.** Below a
@@ -193,7 +208,12 @@ are synthetic; no drawing is required to run them.
   retuned; they are centralised and documented for that reason.
 - **The OCR tier verifies red FreeText spec comments**, not every markup type.
 - Scanned or image-only files degrade to pixel-only comparison.
-- Tested on Windows. Nothing in it is Windows-specific apart from the optional
+- Repeated genuine edits across sheets can resemble boilerplate and be
+  suppressed. A fingerprint mismatch or a heavily changed sparse sheet can
+  require whole-sheet review instead of region-level findings.
+- A project run matches files one-to-one. Combine a revision split across
+  several PDFs into one PDF before comparing it against a single marked-up file.
+- Tested on Windows and macOS. Nothing in it is Windows-specific apart from the optional
   click-through installer under `installer/`.
 
 ## Layout
@@ -204,13 +224,13 @@ comparator.py     single-pair command line entry point
 app.py            browser UI (Streamlit)
 tools/            whole-project runner and dev utilities
 examples/         synthetic drawing generators (8 scenarios)
-tests/            pytest suite over the pure functions
+tests/            synthetic unit and integration regression tests
 ```
 
 ## Provenance
 
-Developed at **D.L. Engineering Inc.** and published with the firm's written
-permission. Client drawings, firm documents, internal identifiers and
+Developed for an engineering practice and published with written permission.
+Client drawings, firm documents, internal identifiers and
 proprietary data are excluded — the sample drawings are generated synthetically
 by the script above, and `.gitignore` excludes PDFs and generated reports so no
 drawing can be committed by accident.

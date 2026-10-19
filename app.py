@@ -305,8 +305,8 @@ def _run(redlined_files, revised_files, cfg, use_ocr, use_vlm=False):
                            f"(redlined: {len(rvalid)}, revised: {len(vvalid)}).")
 
     # Build the verification tier: OCR (fast) and/or the local VLM, chained so OCR
-    # settles the easy reads and the VLM only works what's left. The VLM is gated
-    # inside classify to run only on change-detected spec targets.
+    # settles the easy reads and the VLM only works what's left, including
+    # in-place edits with no density change.
     verifiers = []
     if use_ocr:
         cfg.use_ocr = True
@@ -370,16 +370,16 @@ with st.sidebar:
     use_vlm = st.checkbox("Local VLM (Ollama vision model)", value=False,
                           help="A local on-device vision model reads the before/after "
                                "crop and confirms whether your instruction was applied — "
-                               "for spec redlines where a change was detected at the "
-                               "target. Catches captures OCR can't read. Best with a "
-                               "capable GPU; on a CPU it adds a model call per changed "
+                               "for unresolved spec redlines, including in-place swaps. "
+                               "Catches captures OCR can't read. Best with a "
+                               "capable GPU; on a CPU it adds a model call per unresolved "
                                "target and is slow. Off by default.")
     if use_vlm:
         vlm_ok, vlm_msg = _vlm_status(Config().vlm_model)
         st.caption(("✅ " if vlm_ok else "⚠️ ") + vlm_msg)
         if vlm_ok:
-            st.caption("Runs only where a pixel change was detected at a change-expecting "
-                       "redline target — bounded, but on a slow machine still adds minutes.")
+            st.caption("Runs on unresolved spec targets, even without a pixel change. "
+                       "On a slow machine each target can add minutes.")
 
 
 # ──────────────── file matching for pick-a-pair ────────────────

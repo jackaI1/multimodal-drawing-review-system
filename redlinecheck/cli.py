@@ -41,9 +41,9 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--vlm", action="store_true",
                    help="use a local on-device VLM (Ollama) to read each flagged "
                         "target and confirm captures the pixel diff/OCR can't. Reads "
-                        "before+after crops; fully local. `ollama pull qwen2.5vl:7b`")
+                        "before+after crops; fully local. `ollama pull moondream`")
     p.add_argument("--vlm-model", default=None,
-                   help="override the Ollama vision model (default: qwen2.5vl:7b)")
+                   help=f"override the Ollama vision model (default: {Config().vlm_model})")
     p.add_argument("--hexnotes", action="store_true",
                    help="also flag in-place edits inside closed callouts (e.g. a hexnote "
                         "8c->8); off by default, noisier on heavily re-plotted sheets")
@@ -122,7 +122,7 @@ def main(argv=None) -> int:
     if not cfg.use_ocr and not cfg.use_vlm:
         print("\nNote: run with --ocr (Tesseract) or --vlm (local Ollama vision "
               "model) to turn 'possible misses' into confident captured/missed "
-              "verdicts for beam-size and other in-place text edits.")
+                        "verdicts for beam-size and other in-place text edits.")
     return 0
 
 

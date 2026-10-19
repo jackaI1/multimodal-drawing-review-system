@@ -148,3 +148,13 @@ def test_weak_forced_matches_are_demoted_to_extras_on_both_sides():
     assert res.pairs == []
     assert res.extra_redlined == [0]
     assert res.extra_revised == [0]
+
+
+def test_weak_matches_cannot_steal_a_better_valid_alignment():
+    a = [sig(0, [1, 0, 0]), sig(1, [0, 1, 0])]
+    b = [sig(0, [0.4, 0.34, np.sqrt(1 - 0.4**2 - 0.34**2)]),
+         sig(1, [0.9, 0.34, np.sqrt(1 - 0.9**2 - 0.34**2)])]
+    result = prematch.match_signatures(a, b, Config())
+    assert result.pairs == [(0, 1)]
+    assert result.extra_redlined == [1]
+    assert result.extra_revised == [0]

@@ -98,6 +98,12 @@ def _instruction_tokens(text: str):
     something generic — a wrong "addressed" is worse than a missed one.
     """
     up = text.upper()
+    # The old label in an explicit replacement is context, never evidence that
+    # the requested new label was applied.
+    replacement = re.search(r"\b(?:CHANGE|REVISE)\s+FROM\b.+?\bTO\s+(.+)", up)
+    replacement = replacement or re.search(r"\bREPLACE\b.+?\bWITH\s+(.+)", up)
+    if replacement:
+        up = replacement.group(1)
     toks = set()
     # Split on slash/space/comma so "PF9/150 PF8" -> PF9, 150, PF8 (don't fuse).
     for m in re.findall(r'[A-Z0-9][A-Z0-9\-.+X"\']*', up):
@@ -172,6 +178,25 @@ def _hexnote_numbers(text: str):
     (and confirm it wasn't there before). Captures a trailing letter (15B)."""
     return [m.group(1) for m in
             re.finditer(r'HEX\s*-?\s*NOTE\s*#?\s*(\d{1,3}[A-Z]?)', text.upper())]
+
+
+def _different_value(requested, before_words, after_words):
+    """Read a newly present alternative in the same label family.
+
+    Only a single, unambiguous replacement earns this more specific review
+    verdict. Unrelated new prose or labels are not evidence of a wrong edit.
+    """
+    if len(requested) != 1:
+        return None
+    wanted = requested[0]
+    family = re.sub(r"\d+", "#", wanted)
+    if not re.match(r"^[A-Z]+\d", wanted):
+        return None
+    candidates = {word for word in after_words
+                  if re.sub(r"\d+", "#", word) == family
+                  and _fold(word) != _fold(wanted)
+                  and _fold(word) not in {_fold(w) for w in before_words}}
+    return next(iter(candidates)) if len(candidates) == 1 else None
 
 
 def _upscale(cfg: Config) -> float:
@@ -273,9 +298,15 @@ def make_verifier(cfg: Config):
         bwords, bblob = _words(braw), _norm(braw)
 
         if hit:
+            missing = [t for t in search if not _match(t, awords, ablob, gap)]
+            if missing:
+                return (C.CHANGED_AT_TARGET, "",
+                        "only part of the instruction was read back; missing "
+                        + ", ".join(missing) + " — review")
             disp = f"HEXNOTE {hit}" if hit in hexnums else hit
-            appeared = not _match(hit, bwords, bblob, gap)
-            long_hit = len(_fold(hit)) >= 4
+            new_values = [t for t in search if not _match(t, bwords, bblob, gap)]
+            appeared = bool(new_values)
+            long_hit = all(len(_fold(t)) >= 4 for t in new_values)
             # A SHORT token (L9, B1) only earns green when the instruction is a BARE
             # label (e.g. 'L12'), not a phrase. A phrase like 'CONT. AND CANT. L9'
             # matched on its lone short token is unreliable — OCR coincidentally finds an
@@ -286,7 +317,7 @@ def make_verifier(cfg: Config):
                 # code (hard to match by chance) or a real pixel change was seen at a
                 # bare-label target. These guards keep 'Addressed (verified)' trustworthy.
                 why = "distinctive code" if long_hit else "a change was seen at the target"
-                return (C.CAPTURED, comment.text,
+                return (C.CAPTURED, ", ".join(search),
                         f"value '{disp}' now present in the revision (was not there "
                         f"before) and {why} — OCR")
             if appeared:
@@ -301,15 +332,20 @@ def make_verifier(cfg: Config):
             # the pixel verdict rather than over-claim a capture.
             return None
 
+        other = _different_value(search, bwords, awords)
+        if other:
+            return (C.CHANGED_OTHER, other,
+                    f"read a new value '{other}', not the instructed value — review")
+
         # The architect's drawing pre-prints a placeholder ("BM. BY ENG.") where
         # the engineer must specify the member. The thin final label often won't
         # OCR, but that big placeholder reads reliably — so if it was there before
         # and is gone after, the spec was actioned.
         if any(p in bblob for p in _PLACEHOLDERS) and \
            not any(p in ablob for p in _PLACEHOLDERS):
-            return (C.CAPTURED, comment.text,
-                    "the 'BM. BY ENG.' placeholder at the target was resolved in the "
-                    "revision — OCR")
+            return (C.CHANGED_AT_TARGET, "",
+                    "the placeholder disappeared, but the instructed value was not "
+                    "read back — review")
 
         # HEXNOTE fallback: the architect draws the numbered hexagon anywhere on
         # the sheet, not necessarily at the leader tip. Search the whole revised
@@ -319,8 +355,9 @@ def make_verifier(cfg: Config):
             hn = next((n for n in hexnums
                        if _match(n, fw, fb, gap) and not _match(n, bw_, bb, gap)), None)
             if hn:
-                return (C.CAPTURED, comment.text,
-                        f"HEXNOTE {hn} added on this sheet (found page-wide) — OCR")
+                return (C.CHANGED_AT_TARGET, f"HEXNOTE {hn}",
+                        f"HEXNOTE {hn} appeared elsewhere on this sheet; not read at "
+                        "the target — review")
 
         if bblob or ablob:  # we read text here, but not the instructed value
             return (C.MISSED, "",

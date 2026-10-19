@@ -82,6 +82,7 @@ def _name_key(path: str) -> str:
     """Normalise a filename to its drawing key for name-based matching:
     '0000-EXAMPLE-BLOCK A - DLE Markup#1.PDF' and 'EXAMPLE-BLOCK A.PDF' -> 'exampleblocka'."""
     b = os.path.splitext(os.path.basename(path))[0].lower()
+    b = re.sub(r"(?<![a-z])redlined(?![a-z])", " ", b)
     # Strip decoration but KEEP the sheet number: '#1' is the markup revision marker
     # (drop it), whereas a bare trailing number like '-8'/'-10' is the sheet id and
     # MUST be kept (else EXAMPLE-8 and EXAMPLE-10 collide to the same key).
