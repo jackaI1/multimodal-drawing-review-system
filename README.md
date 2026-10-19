@@ -1,6 +1,6 @@
 # Multimodal Drawing Review System
 
-![Demo](docs/demo.gif)
+https://github.com/user-attachments/assets/a815408f-6fef-4315-a157-25a5fc8508ed
 
 When someone marks up a technical drawing and sends it back to be corrected, a
 human then has to check, by eye, whether every correction was actually made.
