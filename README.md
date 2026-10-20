@@ -2,7 +2,7 @@
 
 A local PDF comparison tool that checks marked-up drawings against revised sheets and produces a review queue of possible misses, verified labels and unrequested changes.
 
-https://github.com/user-attachments/assets/a815408f-6fef-4315-a157-25a5fc8508ed
+https://github.com/user-attachments/assets/e7ba8c98-791b-4ca5-bac0-df6a75b7bbf6
 
 ## Overview
 
