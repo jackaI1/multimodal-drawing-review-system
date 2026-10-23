@@ -197,6 +197,10 @@ installer/                    Windows setup and launcher scripts
 
 ## License
 
+Developed at D.L. Engineering Inc. and published with the firm's written
+permission. Client drawings, firm documents, internal identifiers and
+proprietary data are excluded.
+
 Original project source is MIT; see [`LICENSE`](LICENSE). PyMuPDF 1.26.7 is an
 AGPL-3.0 dependency: distributing a combined application requires applicable
 AGPL corresponding-source and licence compliance, and network deployments may
