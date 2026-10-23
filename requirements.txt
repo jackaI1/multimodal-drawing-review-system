@@ -1,6 +1,6 @@
 # Keep the audited transitive resolution reproducible.
 -c requirements-lock.txt
-# Core engine (fully local — no data leaves your machine)
+# Core engine (fully local; no data leaves your machine)
 # 2.0 introduces layout/LLM packages without license metadata; retain the
 # audited AGPL-3.0 engine used by this application (see THIRD_PARTY_NOTICES.md).
 PyMuPDF==1.26.7
