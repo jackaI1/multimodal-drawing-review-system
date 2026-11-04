@@ -15,6 +15,7 @@ from scipy import ndimage
 
 from .config import Config
 from .align import PageData
+from ._pixels import minimum_shifted_xor
 
 
 @dataclass
@@ -175,12 +176,7 @@ def detect_symbol_changes(page: PageData, cfg: Config):
             continue
         # Micro-align the interiors so re-plot jitter cancels; a genuine content
         # change (the removed 'c') survives.
-        ch = int(np.count_nonzero(cb ^ cf))
-        for dy in range(-R, R + 1):
-            for dx in range(-R, R + 1):
-                if dy or dx:
-                    ch = min(ch, int(np.count_nonzero(
-                        cb ^ np.roll(np.roll(cf, dy, 0), dx, 1))))
+        ch = minimum_shifted_xor(cb, cf, R)
         frac = 2.0 * ch / (bsum + fsum)
         if ch < minpx or not (cfg.symbol_min_frac <= frac <= cfg.symbol_max_frac):
             continue
@@ -240,12 +236,7 @@ def _content_matches(old_crop, new_crop, J: int, frac_thresh: float) -> bool:
     pb = np.zeros((H, W), dtype=bool); pf = np.zeros((H, W), dtype=bool)
     pb[J:J + old_crop.shape[0], J:J + old_crop.shape[1]] = old_crop
     pf[J:J + new_crop.shape[0], J:J + new_crop.shape[1]] = new_crop
-    best = int(np.count_nonzero(pb ^ pf))
-    for dy in range(-J, J + 1):
-        for dx in range(-J, J + 1):
-            if dy or dx:
-                best = min(best, int(np.count_nonzero(
-                    pb ^ np.roll(np.roll(pf, dy, 0), dx, 1))))
+    best = minimum_shifted_xor(pb, pf, J)
     return (2.0 * best / (bsum + fsum)) <= frac_thresh
 
 
