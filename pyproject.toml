@@ -1,0 +1,31 @@
+[build-system]
+requires = ["scikit-build-core>=0.11,<1", "pybind11>=3,<4"]
+build-backend = "scikit_build_core.build"
+
+[project]
+name = "redlinecheck"
+version = "0.1.0"
+description = "Local PDF drawing revision comparison with optional C++ acceleration"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_LICENSES/pybind11/LICENSE"]
+dependencies = [
+  "PyMuPDF==1.26.7",
+  "numpy>=2.0,<3",
+  "scipy>=1.13,<2",
+  "pillow>=10,<13",
+  "pytesseract>=0.3.13,<0.4",
+  "streamlit>=1.40,<2",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10"]
+
+[project.urls]
+Repository = "https://github.com/jackaI1/multimodal-drawing-review-system"
+
+[tool.scikit-build]
+cmake.build-type = "Release"
+wheel.packages = ["redlinecheck"]
+build.tool-args = ["-j2"]

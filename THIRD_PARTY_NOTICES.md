@@ -4,6 +4,15 @@ Audit snapshot: 2026-10-19, fresh CPython 3.12 / macOS arm64 install. Project MI
 
 Install the audited runtime with `pip install -r requirements.txt` (which constrains the full resolution with `requirements-lock.txt`), or tests with `pip install -r requirements-dev.txt`. Other operating systems may add platform-specific dependencies; re-inventory a binary release on its target platform.
 
+## Native extension headers
+
+The optional C++ pixel-comparison extension is built with pybind11 (verified
+with 3.1.0), whose headers use the BSD-3-Clause license. Its unchanged upstream
+[LICENSE](THIRD_PARTY_LICENSES/pybind11/LICENSE) is retained in this repository
+and included in the wheel's license metadata. Source:
+<https://github.com/pybind/pybind11>. CMake and scikit-build-core are build tools;
+they are not runtime requirements of the installed extension.
+
 ## Runtime dependencies
 
 | Component | Version | License / class | Source | Preserved terms |
