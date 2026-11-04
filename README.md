@@ -113,7 +113,7 @@ Runtime packages and their audited transitive versions are pinned in
 python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
-python -m pip install .
+python -m pip install -e .
 python examples/make_sample_drawings.py
 python comparator.py examples/basic_redlined.pdf examples/basic_revised.pdf -o report
 ```
@@ -152,6 +152,11 @@ scikit-build-core. A C++17 compiler is required (Apple Command Line Tools on
 macOS, or GCC/Clang on Linux); build dependencies are installed automatically.
 Use `pip install -e '.[test]'` when developing from this checkout. Installation
 includes the existing Streamlit UI dependencies.
+
+Use the editable install when running `comparator.py`, the benchmark or tests
+from this checkout: the source package otherwise shadows the installed wheel.
+A regular `pip install .` compiles and installs the native wheel for imports
+outside the checkout, including `python -m redlinecheck` from another directory.
 
 The extension accelerates the repeated shifted-XOR search used to compare
 callout interiors and suppress moved drawing content. It counts differing ink
