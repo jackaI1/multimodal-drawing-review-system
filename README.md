@@ -1,6 +1,6 @@
 # Multimodal Drawing Review System
 
-A local tool for checking whether marked-up PDF drawings were changed in the next revision.
+I built a PDF drawing checker because it was easy to miss a requested correction when comparing revisions by hand.
 
 ## Overview
 
