@@ -113,6 +113,7 @@ Runtime packages and their audited transitive versions are pinned in
 python3.12 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
+python -m pip install .
 python examples/make_sample_drawings.py
 python comparator.py examples/basic_redlined.pdf examples/basic_revised.pdf -o report
 ```
@@ -144,14 +145,86 @@ configured endpoint receives target crops; use a loopback endpoint for local-onl
 processing. [`INSTALL.md`](INSTALL.md) describes the Windows installer path;
 that installer was not reverified by this documentation pass.
 
+## C++17 pixel comparison
+
+`pip install .` builds the optional pybind11 extension with CMake and
+scikit-build-core. A C++17 compiler is required (Apple Command Line Tools on
+macOS, or GCC/Clang on Linux); build dependencies are installed automatically.
+Use `pip install -e '.[test]'` when developing from this checkout. Installation
+includes the existing Streamlit UI dependencies.
+
+The extension accelerates the repeated shifted-XOR search used to compare
+callout interiors and suppress moved drawing content. It counts differing ink
+pixels for every small circular shift, matching the previous NumPy implementation
+exactly. It releases the Python GIL, uses a single native thread and avoids
+allocating rolled images. Density thresholds and review states are unchanged.
+
+Source-only use with `pip install -r requirements.txt` automatically uses the
+Python/NumPy fallback. To install without a compiler explicitly:
+
+```sh
+python -m pip install . -Ccmake.define.REDLINECHECK_BUILD_CPP=OFF
+```
+
+Use `REDLINECHECK_PIXEL_BACKEND=python` to force fallback during a comparison;
+`cpp` requires the extension and fails clearly if it is missing. The default is
+`auto`. Check availability with
+`python -c 'from redlinecheck._pixels import NATIVE_AVAILABLE; print(NATIVE_AVAILABLE)'`.
+
+### Reproducible benchmark
+
+[`benchmarks/benchmark_pixels.py`](benchmarks/benchmark_pixels.py) generates a
+seeded synthetic drawing pair, applies a shift and a real edit, asserts identical
+results, warms both implementations and alternates timing order. Timings include
+dispatch and input normalization, excluding fixture generation and compilation.
+The Python baseline is the existing vectorized NumPy roll/XOR loop.
+
+```sh
+python -m pip install -e .
+python benchmarks/benchmark_pixels.py --size 128 --radius 3 --repeat 9
+python benchmarks/benchmark_pixels.py --size 512 --radius 3 --repeat 9
+```
+
+Measured on Apple M5 Pro, macOS arm64 (Darwin 27.0.0), CPython 3.12.14,
+NumPy 2.5.4, Apple Clang Release build, on 2026-11-03:
+
+| Synthetic mask pair | Python/NumPy median | C++17 median | Kernel speedup |
+| --- | ---: | ---: | ---: |
+| 128 × 128, radius 3 | 0.289 ms | 0.070 ms | 4.12× |
+| 512 × 512, radius 3 | 1.500 ms | 1.358 ms | 1.10× |
+
+Both backends return exactly **24 differing pixels** after the best shift.
+Small crops benefit most because the Python path allocates temporary arrays for
+each shift. These are comparison-kernel measurements, not whole-PDF speedups;
+results vary by CPU, crop size and radius. Only generated synthetic masks are used.
+
+## Skills demonstrated
+
+- **C++17 and pybind11:** the native pixel-difference search in
+  [`cpp/pixels.cpp`](cpp/pixels.cpp) serves both callout and moved-content checks
+  in [`redlinecheck/diff.py`](redlinecheck/diff.py), with the Python fallback and
+  backend selection in [`redlinecheck/_pixels.py`](redlinecheck/_pixels.py).
+- **CMake / Python packaging:** [`CMakeLists.txt`](CMakeLists.txt) and
+  [`pyproject.toml`](pyproject.toml) compile the extension during `pip install .`
+  and support a compiler-free install.
+- **Parity testing and performance measurement:**
+  [`tests/test_pixels.py`](tests/test_pixels.py) checks identical counts and
+  consumer results; [`benchmarks/benchmark_pixels.py`](benchmarks/benchmark_pixels.py)
+  measures the synthetic comparison. [GitHub Actions](.github/workflows/tests.yml)
+  builds and tests native and fallback paths on Ubuntu and macOS.
+
 ## Testing
 
 ```sh
 python -m pip install -r requirements-dev.txt
+python -m pip install -e .
 python -m pytest -q
 ```
 
-The current suite has 84 passing tests with Tesseract installed. It groups:
+The suite includes the original 84 regressions plus 45 pixel-comparison and
+benchmark tests. Native-only checks are skipped when the extension is absent;
+CI requires a successful native import before running the full native suite.
+It groups:
 
 - Sequence scoring, weak-match rejection and inserted/dropped pages in
   [`tests/test_prematch_align.py`](tests/test_prematch_align.py).
@@ -161,6 +234,9 @@ The current suite has 84 passing tests with Tesseract installed. It groups:
 - Generated PDF pipelines, DPI scaling, boilerplate, real OCR and report files in
   [`tests/test_pipeline_parity.py`](tests/test_pipeline_parity.py).
 - File-name matching in [`tests/test_project_naming.py`](tests/test_project_naming.py).
+- Exact C++/Python counts, circular boundaries, empty/tiny and strided masks,
+  read-only/noncanonical boolean storage, fallback and both comparison consumers
+  in [`tests/test_pixels.py`](tests/test_pixels.py).
 
 The model-response tests use controlled responses; they do not measure live
 vision-model quality. The real OCR test is skipped if Tesseract is unavailable.
@@ -174,6 +250,8 @@ comparator.py                 single-pair CLI entry point
 app.py                        Streamlit review interface
 examples/make_sample_drawings.py  synthetic PDF scenarios
 tests/                       unit and integration regressions
+cpp/pixels.cpp               C++17 pybind11 comparison kernel
+benchmarks/benchmark_pixels.py  synthetic Python/C++ timing comparison
 tools/run_project.py         multi-file comparison entry point
 installer/                    Windows setup and launcher scripts
 ```

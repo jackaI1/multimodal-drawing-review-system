@@ -9,16 +9,17 @@ description = "Local PDF drawing revision comparison with optional C++ accelerat
 readme = "README.md"
 requires-python = ">=3.12"
 license = "MIT"
+license-files = ["LICENSE", "THIRD_PARTY_LICENSES/pybind11/LICENSE"]
 dependencies = [
   "PyMuPDF==1.26.7",
   "numpy>=2.0,<3",
   "scipy>=1.13,<2",
   "pillow>=10,<13",
   "pytesseract>=0.3.13,<0.4",
+  "streamlit>=1.40,<2",
 ]
 
 [project.optional-dependencies]
-ui = ["streamlit>=1.40,<2"]
 test = ["pytest>=8,<10"]
 
 [project.urls]

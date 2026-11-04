@@ -1,0 +1,61 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  pixel-comparison:
+    name: C++17 and Python fallback (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    env:
+      CMAKE_BUILD_PARALLEL_LEVEL: "2"
+      OMP_NUM_THREADS: "2"
+      OPENBLAS_NUM_THREADS: "2"
+      VECLIB_MAXIMUM_THREADS: "2"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install optional OCR engine
+        run: |
+          if [ "$RUNNER_OS" = "Linux" ]; then
+            sudo apt-get update -qq
+            sudo apt-get install -y tesseract-ocr
+          else
+            brew install tesseract
+          fi
+      - name: Build C++17 extension
+        run: python -m pip install -e '.[test]'
+      - name: Require native backend and run full suite
+        env:
+          REDLINECHECK_PIXEL_BACKEND: cpp
+        run: |
+          python -c "from redlinecheck._pixels import NATIVE_AVAILABLE; assert NATIVE_AVAILABLE"
+          python -m pytest -q
+          python benchmarks/benchmark_pixels.py --size 128 --repeat 3
+      - name: Test an installed wheel outside the source checkout
+        run: |
+          python -m pip wheel --no-deps . --wheel-dir "$RUNNER_TEMP/wheels"
+          python -m venv "$RUNNER_TEMP/wheel-env"
+          "$RUNNER_TEMP/wheel-env/bin/python" -m pip install "$RUNNER_TEMP"/wheels/*.whl
+          cd "$RUNNER_TEMP"
+          "$RUNNER_TEMP/wheel-env/bin/python" -c "import numpy as np; from redlinecheck import _pixels_cpp; a = np.eye(9, dtype=bool); assert _pixels_cpp.minimum_shifted_xor(a, np.roll(a, 1, 0), 2) == 0"
+          "$RUNNER_TEMP/wheel-env/bin/python" -m redlinecheck --help
+      - name: Build without C++ and run full fallback suite
+        env:
+          REDLINECHECK_PIXEL_BACKEND: python
+        run: |
+          python -m pip uninstall -y redlinecheck
+          python -m pip install --no-deps -e . -Ccmake.define.REDLINECHECK_BUILD_CPP=OFF
+          python -c "from redlinecheck._pixels import NATIVE_AVAILABLE; assert not NATIVE_AVAILABLE"
+          python -m pytest -q

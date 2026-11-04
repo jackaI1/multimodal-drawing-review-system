@@ -1,5 +1,6 @@
 """Exact parity with the pre-extension shifted pixel comparison."""
 import importlib
+import importlib.metadata
 from pathlib import Path
 import subprocess
 import sys
@@ -21,6 +22,15 @@ def original_minimum(base, final, radius):
                 best = min(best, int(np.count_nonzero(
                     base ^ np.roll(np.roll(final, dy, 0), dx, 1))))
     return best
+
+
+def test_packaging_includes_existing_ui_dependency():
+    try:
+        requirements = importlib.metadata.requires("redlinecheck")
+    except importlib.metadata.PackageNotFoundError:
+        pytest.skip("running uninstalled source checkout")
+    assert any(req.startswith("streamlit") and "extra ==" not in req
+               for req in requirements)
 
 
 @pytest.mark.parametrize("backend", ["python", "cpp", "auto"])
