@@ -473,6 +473,8 @@ img.ov{{max-width:100%;border:1px solid #d0d3d8;border-radius:4px;margin:6px 0;b
               <div class="imgs"><figure><img src="{e["img"]}"></figure></div>
             </div>''')
         body.append("\n".join(ex))
+    from .vector_report import candidate_section
+    body.insert(0, candidate_section(report, out_dir))
     tail = "</main></body></html>"
     path = os.path.join(out_dir, "summary.html")
     with open(path, "w", encoding="utf-8") as fh:

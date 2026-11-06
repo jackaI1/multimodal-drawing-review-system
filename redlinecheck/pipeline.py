@@ -42,6 +42,8 @@ class Report:
     config: Config
     pages: List[PageResult] = field(default_factory=list)
     extra: List[ExtraPage] = field(default_factory=list)
+    vector_candidates: list = field(default_factory=list)
+    vector_hashes: dict = field(default_factory=dict)
     flattened_pages: List[int] = field(default_factory=list)  # 1-based sheets whose
     # markups were FLATTENED (no annotations -> caught via red-ink fallback)
 
@@ -183,10 +185,18 @@ def _thumb(page, cfg: Config, annots: bool, max_w: int = 700) -> np.ndarray:
 
 def run(redlined_path: str, final_path: str, cfg: Config,
         verifier: Optional[Verifier] = None, progress=True, progress_cb=None,
-        match: "prematch.MatchResult | None" = None) -> Report:
+        match: "prematch.MatchResult | None" = None, *,
+        vector_index=None, vector_project=None, vector_revision=None,
+        page_pairs=None) -> Report:
+    hashes = {}
+    if vector_index is not None:
+        from .vector_search import file_hash
+        hashes = {"source": file_hash(redlined_path), "target": file_hash(final_path)}
     rdoc = fitz.open(redlined_path)
     fdoc = fitz.open(final_path)
     report = Report(redlined_path=redlined_path, final_path=final_path, config=cfg)
+
+    report.vector_hashes = hashes
 
     if cfg.auto_dpi:
         cfg.analysis_dpi = choose_dpi(rdoc, cfg)
@@ -205,6 +215,29 @@ def run(redlined_path: str, final_path: str, cfg: Config,
         if progress:
             print("  precheck: matching pages structurally...", file=sys.stderr, flush=True)
         match = prematch.match_documents(rdoc, fdoc, cfg)
+
+    if page_pairs:
+        from .vector_match import confirm_pairs
+        match = confirm_pairs(match, page_pairs, source_count=len(rdoc), target_count=len(fdoc))
+    if vector_index is not None:
+        from pathlib import Path
+        from .vector_search import file_hash
+        from .vector_match import fallback_candidates
+        target_document = Path(final_path).stem
+        # Index the exact current target, not another file bearing the same name.
+        vector_index.index_pdf(final_path, project=vector_project,
+                               revision=vector_revision, document=target_document)
+        if file_hash(final_path) != hashes["target"]:
+            raise ValueError("target PDF changed during comparison; retry with stable files")
+        similarities = prematch._similarity_matrix(
+            prematch.fingerprint_doc(rdoc, cfg, annots=False),
+            prematch.fingerprint_doc(fdoc, cfg, annots=True))
+        report.vector_candidates = fallback_candidates(
+            rdoc, match, similarities, vector_index, project=vector_project,
+            revision=vector_revision, document=target_document,
+            document_hash=hashes["target"], exclude_sources={a for a, _ in (page_pairs or [])})
+        if file_hash(redlined_path) != hashes["source"] or file_hash(final_path) != hashes["target"]:
+            raise ValueError("PDF changed during candidate retrieval; retry with stable files")
 
     pairs = match.pairs
     total = len(pairs)

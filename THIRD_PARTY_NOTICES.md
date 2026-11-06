@@ -607,3 +607,15 @@ Copyright 2019 Kenneth Reitz
 ```
 
 Streamlit’s full release-specific third-party NOTICES is reproduced as a separate [preserved file](THIRD_PARTY_LICENSES/streamlit/upstream/NOTICES) (approximately 0.8–0.9 MB), with its per-component inventory above. Retain that file with distributions.
+
+
+## Optional local page search
+
+The optional `vector` extra uses qdrant-client 1.20.0 and FastEmbed 0.9.1
+(Apache-2.0); the separate Qdrant server image is Apache-2.0. BAAI/bge-small-en-v1.5
+and Qdrant/clip-ViT-B-32-vision model weights are downloaded on first use under
+their model-card MIT terms. These optional dependencies and model weights are not
+embedded in this repository or its Windows installer. See the upstream
+[Qdrant](https://github.com/qdrant/qdrant),
+[client](https://github.com/qdrant/qdrant-client), and
+[FastEmbed](https://github.com/qdrant/fastembed) licenses and model cards.

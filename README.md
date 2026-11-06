@@ -8,7 +8,9 @@ I used to find each marked correction again in the revised drawing set. A change
 page order or an extra sheet made that harder. I can give this tool the marked-up set
 and the revised set, then work through a list of possible misses with
 before-and-after image crops. It pairs corresponding sheets and also flags changes
-outside the marked areas.
+outside the marked areas. I can also search for a sheet by its contents or find the
+same sheet after a revision changes the page order. Uncertain page matches get
+previews to check before I confirm a pair.
 
 The original tool came from my engineering co-op. I maintain this public version as a
 personal project with generated drawings, so I can share it without client records. To try it,
@@ -58,6 +60,43 @@ optional vision model, an image-reading model run locally with Ollama, can look 
 unresolved targets; it needs separate setup and receives crops at the configured
 endpoint. Uncertain readings stay in the queue for a person to check.
 
+## Finding a sheet across revisions
+
+When page order or layout changes, I search the drawing contents instead of hunting
+through every sheet. The optional local search database stores text and image
+representations of each page, along with its revision and sheet label. I can search
+in plain language or give it a page and ask for similar pages in another revision.
+
+With Docker running and Tesseract installed (`brew install tesseract` on macOS):
+
+```sh
+python -m pip install -e '.[vector,test]'
+docker compose -p drawing-search up -d
+python examples/make_search_drawings.py
+python -m redlinecheck.vector_cli index examples/search_r2.pdf --project sample --revision r2
+python -m redlinecheck.vector_cli search --text 'drinking water and wastewater drainage' --project sample --revision r2
+python -m redlinecheck.vector_cli match examples/search_r1.pdf --page 2 --project sample --revision r2
+```
+
+The sample's plumbing sheet moves from page 2 to page 3. Both searches rank it first.
+The first run downloads the public text and image models; drawing content stays on
+my computer with this localhost setup. To add candidate previews to a comparison:
+
+```sh
+python comparator.py examples/search_r1.pdf examples/search_r2.pdf -o report-search --vector-project sample --vector-revision r2 --dpi 72
+```
+
+Open `report-search/summary.html` and read **Page match candidates**. I inspect the
+source and revised page previews, then use the displayed `--page-pair` command to
+confirm a choice. Suggestions do not silently change the comparison. This search
+workflow uses the command line and HTML report. Stop the database with
+`docker compose -p drawing-search down`; the index is preserved for the next run.
+
+I use Qdrant, a self-hosted vector database that finds nearby content representations,
+with separate text and image indexes. Text comes from the PDF or OCR, and image
+representations come from page crops. The [search design and setup guide](docs/vector-search.md)
+explains filtering, matching, model downloads, storage, deletion and limitations.
+
 ## Faster comparisons
 
 I compare nearby image positions so a small drawing shift is not mistaken for an
@@ -93,7 +132,17 @@ python -m pytest -q
 
 The suite checks generated PDFs, reports, sheet matching, text recognition and
 agreement between the two pixel implementations. Native-only tests need the compiled
-extension; the real text-recognition test needs Tesseract.
+extension; the real text-recognition test needs Tesseract. The search CI job runs
+against a Qdrant container with actual text/image models and scanned fixture drawings:
+
+```sh
+QDRANT_URL=http://127.0.0.1:6333 RUN_VECTOR_MODELS=1 python -m pytest -q
+```
+
+That full setup passes 153 tests, including all 129 existing checks. On the generated
+three-sheet revision set, all 3 page queries rank the matching reordered page first;
+the scanned plumbing sheet and a plain-language water/drainage query also rank its
+match first. These are fixture results, not an accuracy claim for client drawings.
 
 ## Demo
 
