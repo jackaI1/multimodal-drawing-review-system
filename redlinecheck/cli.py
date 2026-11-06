@@ -47,6 +47,12 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--hexnotes", action="store_true",
                    help="also flag in-place edits inside closed callouts (e.g. a hexnote "
                         "8c->8); off by default, noisier on heavily re-plotted sheets")
+    p.add_argument("--vector-project", help="enable local vector candidates under this project label")
+    p.add_argument("--vector-revision", help="target revision label; required with --vector-project")
+    p.add_argument("--qdrant-url", default=os.getenv("QDRANT_URL", "http://127.0.0.1:6333"))
+    p.add_argument("--vector-cache", default=os.getenv("FASTEMBED_CACHE_PATH"))
+    p.add_argument("--page-pair", action="append", default=[], metavar="SOURCE:TARGET",
+                   help="confirm a page candidate (one-based); repeat for multiple pairs")
     return p
 
 
@@ -94,6 +100,16 @@ def main(argv=None) -> int:
         if not os.path.isfile(path):
             print(f"error: file not found: {path}", file=sys.stderr)
             return 2
+    if bool(args.vector_project) != bool(args.vector_revision):
+        print("error: --vector-project and --vector-revision must be supplied together", file=sys.stderr)
+        return 2
+    try:
+        pairs = [tuple(int(n) - 1 for n in pair.split(":")) for pair in args.page_pair]
+        if any(len(pair) != 2 for pair in pairs):
+            raise ValueError()
+    except ValueError:
+        print("error: --page-pair must be SOURCE:TARGET, using page numbers starting at 1", file=sys.stderr)
+        return 2
     cfg = make_config(args)
 
     try:
@@ -103,7 +119,20 @@ def main(argv=None) -> int:
         return 2
 
     print("Comparing (this renders every page, ~a few seconds per page)...", file=sys.stderr)
-    rep = pipeline.run(args.redlined, args.revised, cfg, verifier=verifier)
+    from contextlib import nullcontext
+    try:
+        if args.vector_project:
+            from .vector_search import DrawingIndex
+            context = DrawingIndex.connect(url=args.qdrant_url, cache_dir=args.vector_cache)
+        else:
+            context = nullcontext(None)
+        with context as index:
+            rep = pipeline.run(args.redlined, args.revised, cfg, verifier=verifier,
+                               vector_index=index, vector_project=args.vector_project,
+                               vector_revision=args.vector_revision, page_pairs=pairs)
+    except Exception as error:
+        print(f"error: comparison: {error}", file=sys.stderr)
+        return 2
     os.makedirs(args.out, exist_ok=True)
     counts = report_mod.build_report(rep, args.out)["counts"]
 

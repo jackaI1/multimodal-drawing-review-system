@@ -21,6 +21,7 @@ dependencies = [
 
 [project.optional-dependencies]
 test = ["pytest>=8,<10"]
+vector = ["qdrant-client==1.20.0", "fastembed==0.9.1"]
 
 [project.urls]
 Repository = "https://github.com/jackaI1/multimodal-drawing-review-system"

@@ -59,3 +59,36 @@ jobs:
           python -m pip install --no-deps -e . -Ccmake.define.REDLINECHECK_BUILD_CPP=OFF
           python -c "from redlinecheck._pixels import NATIVE_AVAILABLE; assert not NATIVE_AVAILABLE"
           python -m pytest -q
+
+  vector-search:
+    name: Qdrant, learned embeddings and scanned drawings
+    runs-on: ubuntu-latest
+    services:
+      qdrant:
+        image: qdrant/qdrant:v1.20.0
+        ports:
+          - 6333:6333
+    env:
+      QDRANT_URL: http://127.0.0.1:6333
+      RUN_VECTOR_MODELS: "1"
+      FASTEMBED_CACHE_PATH: ${{ github.workspace }}/.vector-model-cache
+      OMP_NUM_THREADS: "2"
+      OPENBLAS_NUM_THREADS: "2"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/cache@v4
+        with:
+          path: .vector-model-cache
+          key: vector-models-v1-fastembed-0.9.1-${{ runner.os }}-${{ runner.arch }}
+      - name: Install OCR and vector dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y tesseract-ocr
+          python -m pip install -e '.[test,vector]'
+      - name: Wait for database
+        run: curl --fail --retry 20 --retry-connrefused --retry-delay 1 http://127.0.0.1:6333/readyz
+      - name: Run full suite against the container and real local models
+        run: python -m pytest -q
